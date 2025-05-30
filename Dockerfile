@@ -12,7 +12,9 @@ ARG PG_MAJOR
 ARG TARGETARCH
 # renovate: datasource=github-releases depName=tensorchord/pgvecto.rs
 ARG PGVECTORS_TAG=v0.4.0
-ARG VECTORCHORD_TAG=0.4.1
+
+# immich doesn't support >= 0.4.0 yet
+ARG VECTORCHORD_TAG=0.3.0
 
 WORKDIR /tmp/pgvectors
 
