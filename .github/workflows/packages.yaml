@@ -27,10 +27,10 @@ jobs:
       fail-fast: false
       matrix:
         versions:
-          # renovate: datasource=docker depName=registry.developers.crunchydata.com/crunchydata/crunchy-postgres
-          - "ubi8-15.8-0"
-          # renovate: datasource=docker depName=registry.developers.crunchydata.com/crunchydata/crunchy-postgres
-          - "ubi8-16.4-0"
+          # # renovate: datasource=docker depName=registry.developers.crunchydata.com/crunchydata/crunchy-postgres
+          # - "ubi8-15.8-0"
+          # # renovate: datasource=docker depName=registry.developers.crunchydata.com/crunchydata/crunchy-postgres
+          # - "ubi8-16.4-0"
           # renovate: datasource=docker depName=registry.developers.crunchydata.com/crunchydata/crunchy-postgres
           - "ubi9-16.9-2520"
 
@@ -72,7 +72,7 @@ jobs:
         id: version
         run: |
           CRUNCHY_VERSION=${{ matrix.versions }}
-          PG_VERSION=${CRUNCHY_VERSION#ubi8-}
+          PG_VERSION=${CRUNCHY_VERSION#ubi9-}
           PG_MAJOR=${PG_VERSION%.*}
           echo "PG_MAJOR=$PG_MAJOR" >> "$GITHUB_OUTPUT"
 
