@@ -13,8 +13,8 @@ ARG TARGETARCH
 # renovate: datasource=github-releases depName=tensorchord/pgvecto.rs
 ARG PGVECTORS_TAG=v0.3.0
 
-# immich doesn't support >= 0.4.0 yet
-ARG VECTORCHORD_TAG=0.3.0
+# immich supports up to 0.4.2 as per https://github.com/immich-app/immich/releases/tag/v1.135.0
+ARG VECTORCHORD_TAG=0.4.2
 
 WORKDIR /tmp/pgvectors
 
