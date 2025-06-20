@@ -76,10 +76,10 @@ jobs:
           PG_MAJOR=${PG_VERSION%.*}
           echo "PG_MAJOR=$PG_MAJOR" >> "$GITHUB_OUTPUT"
 
-      - name: Extract PGVECTORS_TAG from Dockerfile
+      - name: Extract VECTORCHORD_TAG from Dockerfile
         run: |
-          TAG=$(grep -oP 'ARG PGVECTORS_TAG=\K.*' Dockerfile)
-          echo "PGVECTORS_TAG=$TAG" >> $GITHUB_ENV
+          TAG=$(grep -oP 'ARG VECTORCHORD_TAG=\K.*' Dockerfile)
+          echo "VECTORCHORD_TAG=$TAG" >> $GITHUB_ENV
 
       - name: Generate docker image tags
         id: metadata
@@ -90,8 +90,8 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=ref,event=pr
-            type=raw,value=${{ matrix.versions }}-${{ env.PGVECTORS_TAG }},enable=${{ steps.should-release.outputs.result }}
-            type=raw,value=${{ steps.version.outputs.PG_MAJOR }}-${{ env.PGVECTORS_TAG }},enable=${{ steps.should-release.outputs.result }}
+            type=raw,value=${{ matrix.versions }}-${{ env.VECTORCHORD_TAG }},enable=${{ steps.should-release.outputs.result }}
+            type=raw,value=${{ steps.version.outputs.PG_MAJOR }}-${{ env.VECTORCHORD_TAG }},enable=${{ steps.should-release.outputs.result }}
             type=raw,value=${{ matrix.versions }},enable=${{ steps.should-release.outputs.result }}
             type=raw,value=${{ steps.version.outputs.PG_MAJOR }},enable=${{ steps.should-release.outputs.result }}
 
